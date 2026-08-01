@@ -12,6 +12,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GymFitnessApplication">
         <activity
+            android:name=".MySessions"
+            android:exported="false" />
+        <activity
+            android:name=".Confirmation"
+            android:exported="false" />
+        <activity
+            android:name=".Bookasession"
+            android:exported="false" />
+        <activity
+            android:name=".TrainerBrowseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MemberHomeActivity"
+            android:exported="false" />
+        <activity
             android:name=".LoginActivity"
             android:exported="false" />
         <activity
