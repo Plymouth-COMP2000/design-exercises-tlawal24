@@ -65,6 +65,7 @@
                     android:layout_marginTop="4dp"/>
 
                 <TextView
+                    android:id="@+id/trainer1NextSlot"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Next available: Thu 6:00 PM"
@@ -100,6 +101,7 @@
                     android:layout_marginTop="4dp"/>
 
                 <TextView
+                    android:id="@+id/trainer2NextSlot"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Next available: Fri 9:00 AM"
@@ -136,6 +138,7 @@
                     android:layout_marginTop="4dp"/>
 
                 <TextView
+                    android:id="@+id/trainer3NextSlot"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Next available: Mon 4:00 PM"
@@ -196,4 +199,3 @@
 
     </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
