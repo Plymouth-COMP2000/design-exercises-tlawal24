@@ -8,6 +8,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "gymfitness.db";
     private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
+
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -23,6 +25,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "time TEXT, " +
                 "status TEXT, " +
                 "booking_reference TEXT)");
+
+        db.execSQL("CREATE TABLE users (" +
+                "username TEXT PRIMARY KEY, " +
+                "password TEXT, " +
+                "full_name TEXT, " +
+                "role TEXT)");
+
 
         db.execSQL("CREATE TABLE availability (" +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -43,6 +52,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "username TEXT PRIMARY KEY, " +
                 "bookings_enabled INTEGER DEFAULT 1, " +
                 "cancellations_enabled INTEGER DEFAULT 1)");
+
+        db.execSQL("INSERT INTO users (username, password, full_name, role) VALUES " +
+                "('member1', 'password123', 'Matthew', 'member')");
+        db.execSQL("INSERT INTO users (username, password, full_name, role) VALUES " +
+                "('trainer1', 'password123', 'Sarah Coach', 'trainer')");
     }
 
     @Override
@@ -51,6 +65,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS availability");
         db.execSQL("DROP TABLE IF EXISTS notifications");
         db.execSQL("DROP TABLE IF EXISTS notification_preferences");
+        db.execSQL("DROP TABLE IF EXISTS users");
         onCreate(db);
     }
 }
