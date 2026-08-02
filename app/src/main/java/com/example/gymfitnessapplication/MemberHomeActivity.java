@@ -17,12 +17,21 @@ public class MemberHomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
+
         setContentView(R.layout.activity_member_home);
         LinearLayout findTrainerCard = findViewById(R.id.findTrainerCard);
+        LinearLayout mySessionsCard = findViewById(R.id.mySessionsCard);
+
         findTrainerCard.setOnClickListener(v -> {
             Intent intent = new Intent(MemberHomeActivity.this, TrainerBrowseActivity.class);
             startActivity(intent);
         });
+
+        mySessionsCard.setOnClickListener(v -> {
+            Intent intent = new Intent(MemberHomeActivity.this, TrainerBrowseActivity.class);
+            startActivity(intent);
+        });
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
