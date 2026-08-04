@@ -31,6 +31,10 @@
             android:name=".ManageAvailabilityActivity"
             android:exported="false" />
 
+        <activity
+            android:name=".TrainerSessionsActivity"
+            android:exported="false" />
+
 
         <activity
             android:name=".MemberHomeActivity"
