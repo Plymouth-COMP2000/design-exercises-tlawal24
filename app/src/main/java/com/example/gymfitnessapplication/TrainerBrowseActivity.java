@@ -19,8 +19,7 @@ public class TrainerBrowseActivity extends AppCompatActivity {
         LinearLayout trainerCard1 = findViewById(R.id.trainerCard1);
         trainerCard1.setOnClickListener(v -> {
             Intent intent = new Intent(TrainerBrowseActivity.this, Bookasession.class);
-            intent.putExtra("trainerUsername", "james_whitfield");
-            intent.putExtra("trainerName", "James Whitfield");
+            intent.putExtra("trainer_username", "james_whitfield");
             startActivity(intent);
         });
 
@@ -28,8 +27,7 @@ public class TrainerBrowseActivity extends AppCompatActivity {
         LinearLayout trainerCard2 = findViewById(R.id.trainerCard2);
         trainerCard2.setOnClickListener(v -> {
             Intent intent = new Intent(TrainerBrowseActivity.this, Bookasession.class);
-            intent.putExtra("trainerUsername", "amara_klein");
-            intent.putExtra("trainerName", "Amara Klein");
+            intent.putExtra("trainer_username", "amara_klein");
             startActivity(intent);
         });
 
@@ -37,8 +35,7 @@ public class TrainerBrowseActivity extends AppCompatActivity {
         LinearLayout trainerCard3 = findViewById(R.id.trainerCard3);
         trainerCard3.setOnClickListener(v -> {
             Intent intent = new Intent(TrainerBrowseActivity.this, Bookasession.class);
-            intent.putExtra("trainerUsername", "dan_petrov");
-            intent.putExtra("trainerName", "Dan Petrov");
+            intent.putExtra("trainer_username", "dan_petrov");
             startActivity(intent);
         });
 

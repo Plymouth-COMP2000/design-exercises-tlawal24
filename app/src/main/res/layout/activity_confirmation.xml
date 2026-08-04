@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="24dp">
@@ -42,22 +43,22 @@
 
         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginBottom="10dp">
             <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Trainer" android:textColor="#666666"/>
-            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="James Whitfield" android:gravity="end"/>
+            <TextView android:id="@+id/trainerValue" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="James Whitfield" android:gravity="end"/>
         </LinearLayout>
 
         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginBottom="10dp">
             <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Date" android:textColor="#666666"/>
-            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Thu 6 Aug 2026" android:gravity="end"/>
+            <TextView android:id="@+id/dateValueConfirm" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Thu 6 Aug 2026" android:gravity="end"/>
         </LinearLayout>
 
         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginBottom="10dp">
             <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Time" android:textColor="#666666"/>
-            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="6:00 PM" android:gravity="end"/>
+            <TextView android:id="@+id/timeValueConfirm" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="6:00 PM" android:gravity="end"/>
         </LinearLayout>
 
         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
             <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Reference" android:textColor="#666666"/>
-            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="#REF10437" android:gravity="end"/>
+            <TextView android:id="@+id/referenceValue" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="#REF10437" android:gravity="end"/>
         </LinearLayout>
 
     </LinearLayout>

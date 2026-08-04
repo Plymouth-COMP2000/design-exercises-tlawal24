@@ -25,8 +25,8 @@ public class NotificationPreferencesActivity extends AppCompatActivity {
 
         notificationDao = new NotificationDao(this);
 
-        username = getSharedPreferences("MyAppPrefs", MODE_PRIVATE)
-                .getString("username", "unknown_user");
+        username = getSharedPreferences("gym_prefs", MODE_PRIVATE)
+                .getString("logged_in_user", "unknown_member");
 
         // Load existing preferences
         boolean[] prefs = notificationDao.getPreferences(username);
