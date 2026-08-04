@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GymFitnessApplication">
         <activity
-            android:name=".TrainerHome"
+            android:name=".TrainerHomeActivity"
             android:exported="false" />
         <activity
             android:name=".MySessions"
@@ -26,6 +26,12 @@
         <activity
             android:name=".TrainerBrowseActivity"
             android:exported="false" />
+
+        <activity
+            android:name=".ManageAvailabilityActivity"
+            android:exported="false" />
+
+
         <activity
             android:name=".MemberHomeActivity"
             android:exported="false" />
