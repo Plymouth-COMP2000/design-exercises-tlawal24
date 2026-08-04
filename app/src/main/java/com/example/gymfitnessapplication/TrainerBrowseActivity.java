@@ -15,7 +15,7 @@ public class TrainerBrowseActivity extends AppCompatActivity {
         setContentView(R.layout.activity_trainer_browse);
         LinearLayout trainerCard1 = findViewById(R.id.trainerCard1);
         trainerCard1.setOnClickListener(v -> {
-            Intent intent = new Intent(TrainerBrowseActivity.this, BookasessionActivity.class);
+            Intent intent = new Intent(TrainerBrowseActivity.this, Bookasession.class);
             startActivity(intent);
         });
 
