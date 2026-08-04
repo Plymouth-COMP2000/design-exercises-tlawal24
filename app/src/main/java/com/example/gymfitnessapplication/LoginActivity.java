@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.content.SharedPreferences;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -50,11 +51,12 @@ public class LoginActivity extends AppCompatActivity {
                 String role = cursor.getString(0);
                 cursor.close();
 
+                SharedPreferences prefs = getSharedPreferences("gym_prefs", MODE_PRIVATE);
+                prefs.edit().putString("logged_in_user", username).apply();
+
                 Intent intent;
                 if (role.equals("trainer")) {
-                    // TrainerHomeActivity doesn't exist yet — placeholder for now
-                    Toast.makeText(this, "Trainer login not built yet", Toast.LENGTH_SHORT).show();
-                    return;
+                    intent = new Intent(LoginActivity.this, TrainerHomeActivity.class);
                 } else {
                     intent = new Intent(LoginActivity.this, MemberHomeActivity.class);
                 }
