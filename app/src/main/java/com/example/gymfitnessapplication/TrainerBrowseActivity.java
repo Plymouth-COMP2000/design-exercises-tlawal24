@@ -13,9 +13,32 @@ public class TrainerBrowseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trainer_browse);
+
+
+        // Trainer 1 – James Whitfield
         LinearLayout trainerCard1 = findViewById(R.id.trainerCard1);
         trainerCard1.setOnClickListener(v -> {
             Intent intent = new Intent(TrainerBrowseActivity.this, Bookasession.class);
+            intent.putExtra("trainer_username", "james_whitfield");
+            intent.putExtra("trainer_name", "James Whitfield");
+            startActivity(intent);
+        });
+
+        // Trainer 2 – Amara Klein
+        LinearLayout trainerCard2 = findViewById(R.id.trainerCard2);
+        trainerCard2.setOnClickListener(v -> {
+            Intent intent = new Intent(TrainerBrowseActivity.this, Bookasession.class);
+            intent.putExtra("trainer_username", "amara_klein");
+            intent.putExtra("trainer_name", "Amara Klein");
+            startActivity(intent);
+        });
+
+        // Trainer 3 – Dan Petrov
+        LinearLayout trainerCard3 = findViewById(R.id.trainerCard3);
+        trainerCard3.setOnClickListener(v -> {
+            Intent intent = new Intent(TrainerBrowseActivity.this, Bookasession.class);
+            intent.putExtra("trainer_username", "dan_petrov");
+            intent.putExtra("trainer_name", "Dan Petrov");
             startActivity(intent);
         });
 
