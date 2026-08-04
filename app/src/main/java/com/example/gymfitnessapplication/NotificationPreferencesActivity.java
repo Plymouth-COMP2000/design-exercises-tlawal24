@@ -3,14 +3,15 @@ package com.example.gymfitnessapplication;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class NotificationPreferencesActivity extends AppCompatActivity {
 
-    private CheckBox bookingNotifications;
-    private CheckBox cancellationNotifications;
+    private Switch bookingNotifications;
+    private Switch cancellationNotifications;
     private NotificationDao notificationDao;
     private String username;
 

@@ -4,8 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="24dp">
+    android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/screenTitle"
@@ -16,55 +15,26 @@
         android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="24dp"/>
 
-    <LinearLayout
-        android:id="@+id/sessionCard1"
+    <ScrollView
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="@android:drawable/dialog_holo_light_frame"
-        android:padding="16dp"
+        android:layout_height="0dp"
         app:layout_constraintTop_toBottomOf="@id/screenTitle"
+        app:layout_constraintBottom_toTopOf="@id/notifPrefs"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="16dp">
 
-        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="James Whitfield" android:textStyle="bold"/>
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Thu 6 Aug, 6:00 PM" android:textColor="#666666" android:textSize="12sp" android:layout_marginTop="4dp"/>
-        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/sessionsList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp"/>
 
-        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical">
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Modify" android:textColor="#3C5AC8" android:textSize="12sp"/>
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cancel" android:textColor="#C0392B" android:textSize="12sp" android:layout_marginTop="6dp"/>
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/sessionCard2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="@android:drawable/dialog_holo_light_frame"
-        android:padding="16dp"
-        app:layout_constraintTop_toBottomOf="@id/sessionCard1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="12dp">
-
-        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Amara Klein" android:textStyle="bold"/>
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Fri 9 Aug, 9:00 AM" android:textColor="#666666" android:textSize="12sp" android:layout_marginTop="4dp"/>
-        </LinearLayout>
-
-        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical">
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Modify" android:textColor="#3C5AC8" android:textSize="12sp"/>
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cancel" android:textColor="#C0392B" android:textSize="12sp" android:layout_marginTop="6dp"/>
-        </LinearLayout>
-
-    </LinearLayout>
+    </ScrollView>
 
     <TextView
         android:id="@+id/notifPrefs"
@@ -72,9 +42,12 @@
         android:layout_height="wrap_content"
         android:text="Notification preferences"
         android:textColor="#666666"
-        app:layout_constraintTop_toBottomOf="@id/sessionCard2"
+        android:clickable="true"
+        android:focusable="true"
+        app:layout_constraintBottom_toTopOf="@id/bottomDivider"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="20dp"/>
 
     <View
         android:id="@+id/bottomDivider"
@@ -92,12 +65,13 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:weightSum="3"
+        android:paddingHorizontal="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginBottom="24dp">
 
-        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Home" android:textColor="#888888" android:gravity="center"/>
+        <TextView android:id="@+id/homeNavItem" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Home" android:textColor="#888888" android:gravity="center" android:clickable="true" android:focusable="true"/>
         <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Sessions" android:textStyle="bold" android:gravity="center"/>
         <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Account" android:textColor="#888888" android:gravity="center"/>
 
