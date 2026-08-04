@@ -35,6 +35,11 @@
             android:name=".TrainerSessionsActivity"
             android:exported="false" />
 
+        <activity android:name=".NotificationsActivity" />
+
+        <activity android:name=".NotificationPreferencesActivity"/>
+
+
 
         <activity
             android:name=".MemberHomeActivity"

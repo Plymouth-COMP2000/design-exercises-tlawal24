@@ -27,10 +27,17 @@ public class MemberHomeActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        LinearLayout notificationsBtn = findViewById(R.id.notificationsBtn);
+        notificationsBtn.setOnClickListener(v -> {
+            startActivity(new Intent(this, NotificationsActivity.class));
+        });
+
+
         mySessionsCard.setOnClickListener(v -> {
-            Intent intent = new Intent(MemberHomeActivity.this, TrainerBrowseActivity.class);
+            Intent intent = new Intent(MemberHomeActivity.this, MySessions.class);
             startActivity(intent);
         });
+
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());

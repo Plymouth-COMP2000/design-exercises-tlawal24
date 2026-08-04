@@ -34,6 +34,12 @@ public class TrainerHomeActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        LinearLayout notificationsBtn = findViewById(R.id.notificationsBtn);
+        notificationsBtn.setOnClickListener(v -> {
+            startActivity(new Intent(this, NotificationsActivity.class));
+        });
+
+
         myBookingsCard.setOnClickListener(v -> {
             Intent intent = new Intent(TrainerHomeActivity.this, TrainerSessionsActivity.class);
             startActivity(intent);
