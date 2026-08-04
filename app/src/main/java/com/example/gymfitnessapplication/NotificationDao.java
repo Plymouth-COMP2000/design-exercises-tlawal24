@@ -19,11 +19,15 @@ public class NotificationDao {
         dbHelper = new DatabaseHelper(context);
     }
 
-    // Insert a notification for a user, respecting their preference for this type
+    // Insert a notification ONLY if the user has that type enabled
     public void addNotificationIfEnabled(String username, String type, String message) {
-        if (!isTypeEnabled(username, type)) {
-            return;
-        }
+
+        boolean[] prefs = getPreferences(username);
+        boolean bookingEnabled = prefs[0];
+        boolean cancellationEnabled = prefs[1];
+
+        if (type.equals("booking") && !bookingEnabled) return;
+        if (type.equals("cancellation") && !cancellationEnabled) return;
 
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -36,10 +40,11 @@ public class NotificationDao {
         db.close();
     }
 
-    // Get all notifications for a user, most recent first
+    // Get all notifications for a user
     public List<String[]> getNotificationsForUser(String username) {
         List<String[]> notifications = new ArrayList<>();
         SQLiteDatabase db = dbHelper.getReadableDatabase();
+
         Cursor cursor = db.query("notifications",
                 new String[]{"type", "message", "timestamp", "is_read"},
                 "username = ?",
@@ -53,47 +58,16 @@ public class NotificationDao {
             String isRead = cursor.getString(cursor.getColumnIndexOrThrow("is_read"));
             notifications.add(new String[]{type, message, timestamp, isRead});
         }
+
         cursor.close();
         db.close();
         return notifications;
     }
 
-    // Check if a user has a given notification type enabled (defaults to true if no row exists)
-    public boolean isTypeEnabled(String username, String type) {
-        SQLiteDatabase db = dbHelper.getReadableDatabase();
-        Cursor cursor = db.query("notification_preferences",
-                new String[]{"bookings_enabled", "cancellations_enabled"},
-                "username = ?",
-                new String[]{username},
-                null, null, null);
-
-        boolean enabled = true; // default if no preferences row exists yet
-        if (cursor.moveToFirst()) {
-            if (type.equals("booking")) {
-                enabled = cursor.getInt(cursor.getColumnIndexOrThrow("bookings_enabled")) == 1;
-            } else if (type.equals("cancellation")) {
-                enabled = cursor.getInt(cursor.getColumnIndexOrThrow("cancellations_enabled")) == 1;
-            }
-        }
-        cursor.close();
-        db.close();
-        return enabled;
-    }
-
-    // Save a user's notification preferences (insert or update)
-    public void savePreferences(String username, boolean bookingsEnabled, boolean cancellationsEnabled) {
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put("username", username);
-        values.put("bookings_enabled", bookingsEnabled ? 1 : 0);
-        values.put("cancellations_enabled", cancellationsEnabled ? 1 : 0);
-        db.insertWithOnConflict("notification_preferences", null, values, SQLiteDatabase.CONFLICT_REPLACE);
-        db.close();
-    }
-
-    // Get current preferences for a user (defaults to true/true if none saved yet)
+    // Get preferences (default = true/true)
     public boolean[] getPreferences(String username) {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
+
         Cursor cursor = db.query("notification_preferences",
                 new String[]{"bookings_enabled", "cancellations_enabled"},
                 "username = ?",
@@ -102,12 +76,27 @@ public class NotificationDao {
 
         boolean bookings = true;
         boolean cancellations = true;
+
         if (cursor.moveToFirst()) {
             bookings = cursor.getInt(cursor.getColumnIndexOrThrow("bookings_enabled")) == 1;
             cancellations = cursor.getInt(cursor.getColumnIndexOrThrow("cancellations_enabled")) == 1;
         }
+
         cursor.close();
         db.close();
         return new boolean[]{bookings, cancellations};
+    }
+
+    // Save preferences (insert or update)
+    public void savePreferences(String username, boolean bookingsEnabled, boolean cancellationsEnabled) {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put("username", username);
+        values.put("bookings_enabled", bookingsEnabled ? 1 : 0);
+        values.put("cancellations_enabled", cancellationsEnabled ? 1 : 0);
+
+        db.insertWithOnConflict("notification_preferences", null, values, SQLiteDatabase.CONFLICT_REPLACE);
+        db.close();
     }
 }
