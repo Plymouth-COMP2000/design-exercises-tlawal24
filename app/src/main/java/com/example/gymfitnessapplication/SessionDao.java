@@ -25,4 +25,17 @@ public class SessionDao {
         db.insert("sessions", null, values);
         db.close();
     }
+
+    public void cancelSession(String bookingReference) {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("status", "cancelled");
+        db.update("sessions", values, "booking_reference = ?", new String[]{bookingReference});
+        db.close();
+    }
+
+
+
+
 }
+

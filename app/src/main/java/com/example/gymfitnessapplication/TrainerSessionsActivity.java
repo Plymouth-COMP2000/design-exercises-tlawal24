@@ -98,6 +98,28 @@ public class TrainerSessionsActivity extends AppCompatActivity {
         card.addView(dateTimeText);
         card.addView(statusText);
 
+        if (status.equals("confirmed")) {
+            android.widget.Button cancelBtn = new android.widget.Button(this);
+            cancelBtn.setText("Cancel");
+            cancelBtn.setTextSize(12);
+            cancelBtn.setOnClickListener(v -> {
+                SessionDao sessionDao = new SessionDao(this);
+                sessionDao.cancelSession(reference);
+
+                SharedPreferences prefs = getSharedPreferences("gym_prefs", MODE_PRIVATE);
+                String trainerUsername = prefs.getString("logged_in_user", "unknown_trainer");
+
+                NotificationDao notificationDao = new NotificationDao(this);
+                notificationDao.addNotificationIfEnabled(trainerUsername, "cancellation",
+                        "Session with " + member + " was cancelled.");
+
+                recreate();
+            });
+
+         card.addView(cancelBtn);
+        }
+
+
         return card;
     }
 }
