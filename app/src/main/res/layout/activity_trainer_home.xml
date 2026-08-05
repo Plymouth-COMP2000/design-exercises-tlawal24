@@ -87,6 +87,35 @@
             android:textColor="#666666"/>
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/notificationsCard"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@android:drawable/dialog_holo_light_frame"
+        android:padding="16dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:layout_constraintTop_toBottomOf="@id/myBookingsCard"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Notifications"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="View recent activity"
+            android:textSize="12sp"
+            android:textColor="#666666"/>
+    </LinearLayout>
+
     <View
         android:id="@+id/bottomDivider"
         android:layout_width="0dp"

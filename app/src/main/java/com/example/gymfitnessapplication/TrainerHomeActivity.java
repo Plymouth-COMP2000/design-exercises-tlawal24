@@ -45,6 +45,11 @@ public class TrainerHomeActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        LinearLayout notificationsCard = findViewById(R.id.notificationsCard);
+        notificationsCard.setOnClickListener(v -> {
+            startActivity(new Intent(this, NotificationsActivity.class));
+        });
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
