@@ -60,6 +60,9 @@ public class Bookasession extends AppCompatActivity {
             notificationDao.addNotificationIfEnabled(memberUsername, "booking",
                     "Your booking with " + trainerDisplayName + " was confirmed.");
 
+            notificationDao.addNotificationIfEnabled(trainerUsername, "booking",
+                    "New booking from " + memberUsername + " on " + date + " at " + selectedTime + ".");
+
             Toast.makeText(this, "Booking confirmed", Toast.LENGTH_SHORT).show();
 
             Intent intent = new Intent(this, Confirmation.class);
