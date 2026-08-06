@@ -30,6 +30,11 @@ public class LoginActivity extends AppCompatActivity {
         Button loginButton = findViewById(R.id.loginButton);
         TextView createAccountLink = findViewById(R.id.createAccountLink);
 
+        passwordInput.setOnEditorActionListener((v, actionId, event) -> {
+            loginButton.performClick();
+            return true;
+        });
+
         loginButton.setOnClickListener(v -> {
             String username = emailInput.getText().toString().trim();
             String password = passwordInput.getText().toString().trim();
@@ -71,7 +76,6 @@ public class LoginActivity extends AppCompatActivity {
             // RegisterActivity doesn't exist yet — placeholder for now
             Toast.makeText(this, "Create account screen not built yet", Toast.LENGTH_SHORT).show();
         });
-
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
