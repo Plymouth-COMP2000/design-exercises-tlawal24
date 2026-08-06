@@ -19,7 +19,7 @@ public class TrainerBrowseActivity extends AppCompatActivity {
         LinearLayout trainerCard1 = findViewById(R.id.trainerCard1);
         trainerCard1.setOnClickListener(v -> {
             Intent intent = new Intent(TrainerBrowseActivity.this, Bookasession.class);
-            intent.putExtra("trainer_username", "james_whitfield");
+            intent.putExtra("trainer_username", "trainer1");
             startActivity(intent);
         });
 

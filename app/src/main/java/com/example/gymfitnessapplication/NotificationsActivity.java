@@ -19,7 +19,7 @@ public class NotificationsActivity extends AppCompatActivity {
         NotificationDao notificationDao = new NotificationDao(this);
 
         String username = getSharedPreferences("MyAppPrefs", MODE_PRIVATE)
-                .getString("username", "unknown_user");
+                .getString("logged_in_user", "unknown_user");
 
         LinearLayout container = findViewById(R.id.notificationsContainer);
 
