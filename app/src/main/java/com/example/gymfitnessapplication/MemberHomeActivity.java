@@ -4,6 +4,8 @@ import android.os.Bundle;
 
 import android.content.Intent;
 import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.content.SharedPreferences;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -36,6 +38,20 @@ public class MemberHomeActivity extends AppCompatActivity {
         mySessionsCard.setOnClickListener(v -> {
             Intent intent = new Intent(MemberHomeActivity.this, MySessions.class);
             startActivity(intent);
+        });
+
+        LinearLayout accountCard = findViewById(R.id.accountCard);
+        accountCard.setOnClickListener(v -> {
+            startActivity(new Intent(this, AccountDetailsActivity.class));
+        });
+
+        TextView logoutBtn = findViewById(R.id.logoutBtn);
+        logoutBtn.setOnClickListener(v -> {
+            SharedPreferences prefs = getSharedPreferences("gym_prefs", MODE_PRIVATE);
+            prefs.edit().clear().apply();
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+            finish();
         });
 
 

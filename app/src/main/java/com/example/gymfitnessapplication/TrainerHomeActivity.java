@@ -28,21 +28,26 @@ public class TrainerHomeActivity extends AppCompatActivity {
 
         LinearLayout manageAvailabilityCard = findViewById(R.id.manageAvailabilityCard);
         LinearLayout myBookingsCard = findViewById(R.id.myBookingsCard);
+        LinearLayout notificationsCard = findViewById(R.id.notificationsCard);
 
         manageAvailabilityCard.setOnClickListener(v -> {
-            Intent intent = new Intent(TrainerHomeActivity.this, ManageAvailabilityActivity.class);
-            startActivity(intent);
+            startActivity(new Intent(TrainerHomeActivity.this, ManageAvailabilityActivity.class));
         });
-
 
         myBookingsCard.setOnClickListener(v -> {
-            Intent intent = new Intent(TrainerHomeActivity.this, TrainerSessionsActivity.class);
-            startActivity(intent);
+            startActivity(new Intent(TrainerHomeActivity.this, TrainerSessionsActivity.class));
         });
 
-        LinearLayout notificationsCard = findViewById(R.id.notificationsCard);
         notificationsCard.setOnClickListener(v -> {
             startActivity(new Intent(this, NotificationsActivity.class));
+        });
+
+        TextView logoutBtn = findViewById(R.id.logoutBtn);
+        logoutBtn.setOnClickListener(v -> {
+            prefs.edit().clear().apply();
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+            finish();
         });
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {

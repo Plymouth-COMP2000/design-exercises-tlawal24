@@ -39,7 +39,9 @@
 
         <activity android:name=".NotificationPreferencesActivity"/>
 
-
+        <activity
+            android:name=".AccountDetailsActivity"
+            android:exported="false" />
 
         <activity
             android:name=".MemberHomeActivity"
